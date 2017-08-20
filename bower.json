@@ -1,0 +1,24 @@
+{
+  "name": "polymer-game",
+  "homepage": "https://github.com/mkaul/polymer-game",
+  "description": "A little game in Polymer",
+  "main": "index.html",
+  "keywords": [
+    "Game"
+  ],
+  "authors": [
+    "Manfred Kaul"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "^2.0.2"
+  }
+}
