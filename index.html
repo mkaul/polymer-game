@@ -111,7 +111,7 @@
                         + (100 *  this.number_of_success / this.number_of_clicks ).toFixed(2)
                         + '% in ' 
                         + ( this.timer / 10 ) + ' sec.';
-                    this.$.rate.innerHTML = 
+                    this.$.rate.innerText = 
                         ( 100 * this.timer / this.number_of_clicks ).toFixed(1)
                         + ' msec per Click.'; 
                     this.start_label = "Start"; // next turn
