@@ -1,7 +1,7 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="../polymer/lib/mixins/gesture-event-listeners.html">
 
-<dom-module id="polymer-game">
+<dom-module id="polymer-game-chooser">
     <template>
         <style>
             :host {
@@ -74,10 +74,11 @@
             <button class="start" on-tap="start">[[start_label]]</button>
         </div>
         <div class="row result">[[result]]</div>
+        <div id="rate"></div>
     </template>
     <script>
-        class PolyElement extends Polymer.GestureEventListeners( Polymer.Element ) {
-            static get is() { return 'polymer-game'; }
+        class GameChooser extends Polymer.GestureEventListeners( Polymer.Element ) {
+            static get is() { return 'polymer-game-chooser'; }
             static get properties() {
                 return {
                     next: { type: Number, notify: true },
@@ -109,8 +110,11 @@
                     this.result = 'Success Rate = ' 
                         + (100 *  this.number_of_success / this.number_of_clicks ).toFixed(2)
                         + '% in ' 
-                        + ( this.timer / 10 ) + ' sec.'; 
-                    this.start_label = "Start";
+                        + ( this.timer / 10 ) + ' sec.';
+                    this.$.rate.innerHTML = 
+                        ( 100 * this.timer / this.number_of_clicks ).toFixed(1)
+                        + ' msec per Click.'; 
+                    this.start_label = "Start"; // next turn
                 } else {
                     this.intervalID = setInterval( () => {
                         this.timer += 1;
@@ -151,7 +155,7 @@
             }
         }
         // Register element.
-        customElements.define(PolyElement.is, PolyElement);
+        customElements.define(GameChooser.is, GameChooser);
     </script>
 </dom-module>
-<polymer-game></polymer-game>
+<polymer-game-chooser></polymer-game-chooser>
