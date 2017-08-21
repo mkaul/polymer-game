@@ -104,7 +104,10 @@
                 // to add a listener to the host element.
             }
             getRandomInt() {
-                return Math.floor(( 10**this.digit_count * Math.random() ) % 10**this.digit_count );
+                return Math.floor(
+                    (((10**(this.digit_count-1)) +
+                     ( 10**this.digit_count - (10**(this.digit_count-1))) * Math.random()) ) 
+                   % 10**this.digit_count );
             }
             start(){ // both start and stopp
                 if ( this.intervalID ){ // is running
